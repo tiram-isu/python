@@ -32,25 +32,14 @@ def create_openpose_wrapper(openpose_import):
     # Custom Params (refer to include/openpose/flags.hpp for more parameters)
     params = dict()
     params["model_folder"] = model_dir_path
-    # params["hand"] = True
     params["logging_level"] = 3
     params["number_people_max"] = 2
     params["fps_max"] = -1
     params["disable_blending"] = True
     params["keypoint_scale"] = 3
-    # params["net_resolution"] = "-1x368"
 
     # Starting OpenPose
     op_wrapper = openpose_import.WrapperPython()
     op_wrapper.configure(params)
     op_wrapper.start()
-    return op_wrapper
-
-# op = init_openpose_import()
-# poseModel = op.PoseModel.BODY_25
-# print(op.getPoseBodyPartMapping(poseModel))
-# print(op.getPoseNumberBodyParts(poseModel))
-# print(op.getPosePartPairs(poseModel))
-# print(op.getPoseMapIndex(poseModel))
-
-    
+    return op_wrapper    
