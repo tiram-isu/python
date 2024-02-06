@@ -28,12 +28,9 @@ while True:
     # Process Image
     imageToProcess = frame
     datum.cvInputData = imageToProcess
-    # print("datum: ", datum.poseKeypoints)
     op_wrapper.emplaceAndPop(op_import.VectorDatum([datum]))
-    # break
-    # cv2.imshow('frame', datum.cvOutputData)
-    # print("Left wrist: ", datum.poseKeypoints[0][7][1])
-    # print("Right wrist: ", datum.poseKeypoints[1][4][1])
+
+    # Send data to Unity client
     client.send_pose_keypoints(datum.poseKeypoints)
     if cv2.waitKey(1) == ord('q'):
         client.disconnect()
